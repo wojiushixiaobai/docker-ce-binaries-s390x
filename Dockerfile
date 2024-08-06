@@ -1,8 +1,6 @@
-## Base Image
-# https://github.com/wojiushixiaobai/docker-loongnix-artifacts/tree/master/debian/buster-slim
-# https://github.com/wojiushixiaobai/docker-library-loong64/blob/master/golang/1.19/slim-buster/Dockerfile
+ARG GO_VERSION=1.21
 
-FROM golang:1.20-bookworm AS builder
+FROM golang:${GO_VERSION}-bookworm AS builder
 
 ARG RUNC_VERSION=v1.1.9
 ARG CONTAINERD_VERSION=v1.7.6
