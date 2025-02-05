@@ -1,10 +1,10 @@
-ARG GO_VERSION=1.21
+ARG GO_VERSION=1.23.5
 
 FROM golang:${GO_VERSION}-bookworm AS builder
 
-ARG RUNC_VERSION=v1.1.9
-ARG CONTAINERD_VERSION=v1.7.6
-ARG DOCKER_VERSION=v24.0.7
+ARG RUNC_VERSION=v1.2.4
+ARG CONTAINERD_VERSION=v1.7.25
+ARG DOCKER_VERSION=v27.5.1
 ARG TINI_VERSION=v0.19.0
 
 ENV GOPROXY=https://goproxy.io,direct \
@@ -84,7 +84,7 @@ RUN set -ex; \
     rm -rf docker
 
 FROM debian:bookworm-slim
-ARG DOCKER_VERSION=v24.0.7
+ARG DOCKER_VERSION=v27.5.1
 
 COPY --from=builder /opt /opt
 WORKDIR /opt
